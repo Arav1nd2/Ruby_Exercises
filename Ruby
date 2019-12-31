@@ -1,0 +1,40 @@
+irb -->for ruby interpreter(interactive ruby)
+13.even?  //() not used for fns, ? used
+=>false
+puts "Hello World"
+Math.sqrt 49 //Note:- parenthesis not mandatory
+###gets
+    a=gets  //ip-> welcome
+    //op-> welcome\n
+
+    a=gets.chomp  or gets.strip
+    a=gets.chomp.to_i // to typecast string to int
+###Data Types
+    Hashes
+    nil
+    Symbols
+#String
+    a=10
+    "My age id #{a}" // Note:- string interpolation possible only in ""
+#Symbols    
+    a symbol is preceded by a :
+    used in hash data structues
+#hash
+    a={"raj"=>"CSE","ram"=>"ECE"}
+    puts a["raj"]
+################################################################
+if ..end
+if else ..end
+if elsif ..end
+
+##Modified if
+a=100
+puts "Welcome" if a>100
+
+##for loop
+a=gets.chomp.to_i
+for in l..a do /// .. ->inclusive, ...->exclusive
+    puts i
+end
+
+
