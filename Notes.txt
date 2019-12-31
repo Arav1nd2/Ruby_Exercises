@@ -1,0 +1,24 @@
+Classes and Objects
+-------------------
+
+Create a class 
+
+Ex:
+
+Instance variables are like attributes of the class
+We need not declare it before using.
+
+class Book
+    def set_nam(args)
+        @name = args # @name is a instance variable 
+    end
+
+    def get_name
+        return @name
+    end
+
+end
+
+book1 = Book.new
+book1.set_nam("Wings of fire")
+puts book1.get_name()
