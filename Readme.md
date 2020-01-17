@@ -7,7 +7,7 @@
   <li>Validates/ Checks for cycles in Zone Data before resolving the domain name</li>
 </ul>
 
-## Algorithms Used
+## Algorithms & Data Structures Used
 
 <li>Depth First Search for Cycle Detection</li>
 <li>Hash for storing the Zone data</li>
