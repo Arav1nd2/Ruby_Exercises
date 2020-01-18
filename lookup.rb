@@ -46,12 +46,12 @@ end
 def is_valid?(records)
   visited = {}
   records.each do |key, value|
-    visited["#{key}"] = false
+    visited[key] = false
   end
   valid = false
   records.each do |k, val|
     records.each do |key, value|
-      visited["#{key}"] = false
+      visited[key] = false
     end
     valid |= dfs(k, visited, records)
   end
@@ -61,20 +61,19 @@ end
 # Parse Raw string and transform it to appropriate Data Structure
 # Also Performs Validation.
 def parse_dns(raw)
-  records = {}
-  raw.each do |row|
-    data = row.strip.split(", ")
-    if data.size == 0
-      next
-    end
-    records["#{data[1]}"] = { :type => data[0], :val => data[2] }
-  end
-  if is_valid?(records) == true
-    return records
+  dns = {}
+  raw.
+    reject {|line| line.empty? }.
+    map {|line| line.strip.split(", ") }.
+    reject {|record| record.length < 3 }.
+    each {|record| dns[record[1]] = { :type => record[0], :val => record[2] } }
+
+  if is_valid?(dns)
+    dns
   else
-    puts "Zone Data contains cycles!"
+    puts "Zone data is invalid (it may contain cycles)."
     exit
-  end
+  end 
 end
 
 # A utility function to resolve domain name to IP Address.
@@ -84,6 +83,7 @@ def resolve(records, chain, domain)
       chain << records[domain][:val]
       return chain
     end
+    chain << records[domain][:val]
     return resolve(records, chain, records[domain][:val])
   else
     chain << "Domain Not Found"
