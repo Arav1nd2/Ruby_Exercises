@@ -6,6 +6,6 @@ def connect_db!
     adapter: "postgresql",
     database: "saas_db",
     user: "postgres",
-    password: "postgres",
+    password: "PLEASE_PUT_YOUR_DB_PASSWORD_HERE",
   )
 end
