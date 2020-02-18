@@ -24,9 +24,9 @@ class Todo < ActiveRecord::Base
   end
 
   def self.show_list()
-    overdue = all.filter { |t| t.overdue? }.map { |t| t.to_displayable_string }
-    today = all.filter { |t| t.due_today? }.map { |t| t.to_displayable_string }
-    later = all.filter { |t| t.due_later? }.map { |t| t.to_displayable_string }
+    overdue = where("due_date < ?", Date.today).map { |t| t.to_displayable_string }
+    today = where("due_date = ?", Date.today).map { |t| t.to_displayable_string }
+    later = where("due_date > ?", Date.today).map { |t| t.to_displayable_string }
     puts "My Todo-List\n\nOverdue\n"
     puts overdue
     puts "\n\nDue Today"
